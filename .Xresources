@@ -12,6 +12,7 @@ URxvt.matcher.button: 1
 ! Transparency
 URxvt*transparent: true
 URxvt*shading: 30
+URxvt*blurRadius: 8x8
 
 ! Molokai theme
 URxvt*background: #101010
