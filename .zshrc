@@ -21,3 +21,6 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 antigen theme agnoster
 
 antigen apply
+
+export NVM_DIR="/home/russley/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
