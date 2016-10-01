@@ -22,5 +22,7 @@ antigen theme agnoster
 
 antigen apply
 
+alias fuck='$(thefuck $(fc -ln -1))'
+
 export NVM_DIR="/home/russley/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
