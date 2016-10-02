@@ -13,7 +13,7 @@ set $mod Mod4
 
 new_window pixel 2
 
-bindsym $mod+p exec --no-startup-id ~/bin/monmode.sh
+bindsym $mod+p exec --no-startup-id ~/bin/monitor_mode.sh
 
 bindsym $mod+F5 exec --no-startup-id xbacklight -dec 10
 bindsym $mod+F6 exec --no-startup-id xbacklight -inc 10

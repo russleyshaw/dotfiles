@@ -2,6 +2,7 @@
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
+DEFAULT_USER="russley"
 bindkey -e
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
@@ -11,11 +12,18 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-source /home/russley/applications/zsh-users/antigen/antigen.zsh
+source /usr/share/zsh/scripts/antigen/antigen.zsh
 
 antigen use oh-my-zsh
 
 antigen bundle git
+antigen bundle docker
+antigen bundle node
+antigen bundle npm
+antigen bundle nvm
+antigen bundle thefuck
+antigen bundle vagrant
+
 antigen bundle zsh-users/zsh-syntax-highlighting
 
 antigen theme agnoster

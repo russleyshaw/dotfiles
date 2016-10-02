@@ -50,4 +50,5 @@ fi
 
 compton &
 sh ~/.fehbg &
+dunst &
 exec i3
