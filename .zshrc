@@ -12,22 +12,11 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-source /usr/share/zsh/scripts/antigen/antigen.zsh
+source ~/bin/antigen.zsh
 
 antigen use oh-my-zsh
-
-antigen bundle git
-antigen bundle docker
-antigen bundle node
-antigen bundle npm
-antigen bundle nvm
-antigen bundle thefuck
-antigen bundle vagrant
-
 antigen bundle zsh-users/zsh-syntax-highlighting
-
 antigen theme agnoster
-
 antigen apply
 
 alias fuck='$(thefuck $(fc -ln -1))'
