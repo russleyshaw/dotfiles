@@ -48,7 +48,12 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
+devmon --exec-on-drive "notify-send --urgency=low \"Drive %l (%f) has been mounted at %d\"" \
+       --exec-on-unmount "notify-send --urgency=low \"Drive %l (%f) has been unmounted from %d\"" \
+       --exec-on-remove "notify-send --urgency=low \"Drive %l (%f) has been removed from %d\"" &
+octopi-notifier &
 compton &
 sh ~/.fehbg &
 dunst &
+redshift-gtk &
 exec i3
