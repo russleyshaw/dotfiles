@@ -1,2 +1,3 @@
 #!/bin/sh
+
 feh  --bg-fill '/home/russley/images/wallpapers/planet.jpg' 

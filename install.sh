@@ -1,18 +1,33 @@
 #/bin/bash
 
-ISEFI=[ -d /sys/firmware/efi/efivars ]
+mkdir ~/bin/
+mkdir -p ~/images/screenshots/
+mkdir -p ~/images/wallpapers/
+mkdir ~/projects/
 
-echo "#### $(date) - Selecting timezone..."
-select region in $(timedatectl list-timezones | grep -o -E '^[[:alpha:]]*' | sort | uniq); do
-    select timezone in $(timedatectl list-timezones | grep -E "^${region}/.*" | grep -o '[[:alpha:]]*$' | sort | uniq); do
-        timedatectl set-timezone ${region}/${timezone}
-        break
-    done
-    break
-done
-
+# Time & Date
+timedatectl set-timezone America/Chicago
 timedatectl set-ntp true
 
-echo "#### $(date) - Installing the base packages..."
-pacstrap /mnt baase
+# Powerline Fonts
+git clone https://github.com/powerline/fonts.git ~/bin/powerline/fonts
+bash ~/bin/powerline/fonts/install.sh
+
+# Antigen
+curl https://cdn.rawgit.com/zsh-users/antigen/v1.3.1/bin/antigen.zsh > ~/bin/antigen.zsh
+
+
+sudo pacman -S xorg-server xorg-xrandr
+
+# LightDM
+sudo pacman -S --force lightdm lightdm-gtk-greeter
+
+sudo pacman -S zsh neovim i3-wm i3status udevil compton simplescreenrecorder feh gparted gksu
+
+# Yaourt things
+yaourt -S google-chrome-beta visual-studio-code gitkraken slack-desktop arandr
+
+cp .fehbg ~/.fehbg
+cp -r config ~/.config
+cp -r .shutter ~/
 
