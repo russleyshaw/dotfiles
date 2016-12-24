@@ -9,10 +9,11 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
-exec ~/.screenlayout/xrandr_desktop.sh
-exec dunst
-exec compton
-exec devmon
+exec ~/.screenlayout/xrandr_desktop.sh &
+exec dunst &
+exec compton &
+exec devmon & 
+exec nm-applet &
 
 set $mod Mod4
 

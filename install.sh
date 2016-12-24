@@ -21,11 +21,16 @@ curl https://cdn.rawgit.com/zsh-users/antigen/v1.3.1/bin/antigen.zsh > ~/bin/ant
 sudo pacman -S --noconfirm --force \
     xorg-server xorg-xrandr lightdm lightdm-gtk-greeter \
     zsh neovim udevil i3status compton dunst feh docker \
-    udevil simplescreenrecorder gparted gksu
+    udevil simplescreenrecorder gparted gksu networkmanager network-manager-applet
+
 
 # Yaourt Packages
 yaourt -S --noconfirm \
     google-chrome-beta visual-studio-code gitkraken slack-desktop arandr
+
+# Network Manager
+sudo systemctl enable NetworkManager.service
+sudo systemctl start NetworkManager.service
 
 # Docker
 sudo systemctl enable docker.service 
@@ -34,5 +39,5 @@ sudo usermod -aG docker $USER
 # NVM
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
 
-cp .fehbg ~/.fehbg
-cp -r config ~/.config
+cp -vf .fehbg ~/.fehbg
+cp -TRvf config/ ~/.config/
