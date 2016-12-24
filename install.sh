@@ -17,14 +17,14 @@ bash ~/bin/powerline/fonts/install.sh
 # Antigen
 curl https://cdn.rawgit.com/zsh-users/antigen/v1.3.1/bin/antigen.zsh > ~/bin/antigen.zsh
 
-# Desktop Manager
-sudo pacman -S --no-confirm --force \
+# Packages Packages
+sudo pacman -S --noconfirm --force \
     xorg-server xorg-xrandr lightdm lightdm-gtk-greeter \
     zsh neovim udevil i3status compton dunst feh docker \
     udevil simplescreenrecorder gparted gksu
 
-# Yaourt things
-yaourt -S --no-confirm \
+# Yaourt Packages
+yaourt -S --noconfirm \
     google-chrome-beta visual-studio-code gitkraken slack-desktop arandr
 
 # Docker
