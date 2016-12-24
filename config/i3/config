@@ -14,6 +14,7 @@ exec dunst &
 exec compton &
 exec devmon & 
 exec nm-applet &
+exec volumeicon &
 
 set $mod Mod4
 
