@@ -1,7 +1,5 @@
 #/bin/bash
 
-echo $config
-
 # Setup folders
 mkdir -p ~/bin/
 mkdir -p ~/images/screenshots/
