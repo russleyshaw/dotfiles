@@ -19,20 +19,17 @@ bash ~/bin/powerline/fonts/install.sh
 # Antigen
 curl https://cdn.rawgit.com/zsh-users/antigen/v1.3.1/bin/antigen.zsh > ~/bin/antigen.zsh
 
-
-
 # Desktop Manager
-sudo pacman -S xorg-server xorg-xrandr
-sudo pacman -S --force lightdm lightdm-gtk-greeter
-sudo pacman -S zsh neovim udevil i3status compton dunst feh
-
-sudo pacman -S udevil simplescreenrecorder gparted gksu
+sudo pacman -S --no-confirm --force \
+    xorg-server xorg-xrandr lightdm lightdm-gtk-greeter \
+    zsh neovim udevil i3status compton dunst feh docker \
+    udevil simplescreenrecorder gparted gksu
 
 # Yaourt things
-yaourt -S google-chrome-beta visual-studio-code gitkraken slack-desktop arandr
+yaourt -S --no-confirm \
+    google-chrome-beta visual-studio-code gitkraken slack-desktop arandr
 
 # Docker
-sudo pacman -S docker
 sudo systemctl enable docker.service 
 sudo usermod -aG docker $USER
 
