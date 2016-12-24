@@ -1,5 +1,7 @@
 #/bin/bash
 
+echo $config
+
 # Setup folders
 mkdir -p ~/bin/
 mkdir -p ~/images/screenshots/
@@ -16,6 +18,8 @@ bash ~/bin/powerline/fonts/install.sh
 
 # Antigen
 curl https://cdn.rawgit.com/zsh-users/antigen/v1.3.1/bin/antigen.zsh > ~/bin/antigen.zsh
+
+
 
 # Desktop Manager
 sudo pacman -S xorg-server xorg-xrandr
