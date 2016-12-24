@@ -27,8 +27,8 @@ new_window pixel 2
 
 #bindsym $mod+p exec --no-startup-id ~/bin/monitor_mode.sh
 
-bindsym $mod+F5 exec --no-startup-id xbacklight -dec 10
-bindsym $mod+F6 exec --no-startup-id xbacklight -inc 10
+bindsym $mod+F5 exec --no-startup-id xbacklight -dec 10 && notify-send "Backlight: $(xbacklight -get)"
+bindsym $mod+F6 exec --no-startup-id xbacklight -inc 10 && notify-send "Backlight: $(xbacklight -get)"
 
 bindsym Print exec --no-startup-id shutter --full
 bindsym Shift+Print exec --no-startup-id shutter --select
