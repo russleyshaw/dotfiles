@@ -40,7 +40,9 @@ sudo usermod -aG docker $USER
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
 
 cp -vf .fehbg ~/.fehbg
+cp -vf .zshrc ~/.zshrc
 cp -TRvf config/ ~/.config/
+cp -TRvf images/ ~/images/
 
 # Switch to zsh
 chsh -s $(which zsh)
