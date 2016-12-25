@@ -6,4 +6,4 @@ rm -rf ${DIR}
 git clone ${REPO} ${DIR}
 cd ${DIR}
 
-bash ./install.sh
+bash -i ./install.sh
