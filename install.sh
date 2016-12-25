@@ -1,10 +1,5 @@
 #/bin/bash
 
-select c in "thinga" "thingb"; do 
-    echo "${c}"
-    break
-done
-
 # Setup folders
 mkdir -p ~/bin/
 mkdir -p ~/projects/
