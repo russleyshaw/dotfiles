@@ -9,7 +9,7 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
-# exec ~/.screenlayout/xrandr_desktop.sh &
+exec ~/.screenlayout/xrandr.sh &
 exec dunst &
 exec compton &
 exec ~/.fehbg
@@ -20,12 +20,7 @@ exec redshift-gtk &
 
 set $mod Mod4
 
-# workspace 1 output HDMI-1
-# workspace 2 output DVI-I-1
-
 new_window pixel 2
-
-#bindsym $mod+p exec --no-startup-id ~/bin/monitor_mode.sh
 
 bindsym $mod+F5 exec --no-startup-id xbacklight -dec 10
 bindsym $mod+F6 exec --no-startup-id xbacklight -inc 10
