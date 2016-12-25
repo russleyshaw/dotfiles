@@ -2,9 +2,12 @@
 
 # Setup folders
 mkdir -p ~/bin/
+mkdir -p ~/projects/
+
+# Setup images
 mkdir -p ~/images/screenshots/
 mkdir -p ~/images/wallpapers/
-mkdir -p ~/projects/
+cp -TRvf images/ ~/images/
 
 # Time & Date
 timedatectl set-timezone America/Chicago
@@ -42,7 +45,6 @@ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | b
 cp -vf .fehbg ~/.fehbg
 cp -vf .zshrc ~/.zshrc
 cp -TRvf config/ ~/.config/
-cp -TRvf images/ ~/images/
 
 # Switch to zsh
 chsh -s $(which zsh)
