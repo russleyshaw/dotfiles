@@ -9,19 +9,19 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
-exec ~/.screenlayout/xrandr_desktop.sh &
+# exec ~/.screenlayout/xrandr_desktop.sh &
 exec dunst &
 exec compton &
+exec ~/.fehbg
 exec devmon & 
 exec nm-applet &
 exec volumeicon &
+exec redshift-gtk &
 
 set $mod Mod4
 
-workspace 1 output HDMI-1
-workspace 2 output DVI-I-1
-
-exec ~/.fehbg
+# workspace 1 output HDMI-1
+# workspace 2 output DVI-I-1
 
 new_window pixel 2
 
