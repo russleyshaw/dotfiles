@@ -36,6 +36,9 @@ yaourt -S --noconfirm \
 sudo systemctl enable NetworkManager.service
 sudo systemctl start NetworkManager.service
 
+# LightDM
+sudo systemctl enable lightdm.service
+
 # Docker
 sudo systemctl enable docker.service 
 sudo usermod -aG docker $USER
@@ -47,5 +50,4 @@ cp -vf .fehbg ~/.fehbg
 cp -vf .zshrc ~/.zshrc
 cp -TRvf config/ ~/.config/
 
-echo "Run the following to switch to zsh:"
-echo "chsh -s \$(which zsh)"
+sudo usermod --shell $(which zsh) russley
