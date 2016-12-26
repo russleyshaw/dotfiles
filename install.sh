@@ -23,8 +23,8 @@ curl https://cdn.rawgit.com/zsh-users/antigen/v1.3.1/bin/antigen.zsh > ~/bin/ant
 # Packages Packages
 sudo pacman -S --noconfirm --force \
     xorg-server xorg-xrandr lightdm lightdm-gtk-greeter xorg-xbacklight redshift \
-    xf86-input-synaptics keepass \
-    zsh neovim udevil i3-wm i3status termite compton dunst feh docker \
+    xf86-input-synaptics keepass linux-headers virtualbox \
+    zsh neovim udevil i3-wm i3status termite compton dunst feh docker dmenu \
     udevil simplescreenrecorder gparted gksu networkmanager network-manager-applet \
     pulseaudio pulseaudio-alsa pavucontrol volumeicon
 
