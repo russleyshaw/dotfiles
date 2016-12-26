@@ -16,7 +16,7 @@ exec ~/.fehbg
 exec devmon & 
 exec nm-applet &
 exec volumeicon &
-exec redshift-gtk &
+exec redshift &
 
 set $mod Mod4
 
