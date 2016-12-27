@@ -24,6 +24,7 @@ curl https://cdn.rawgit.com/zsh-users/antigen/v1.3.1/bin/antigen.zsh > ~/bin/ant
 sudo pacman -S --noconfirm --force \
     xorg-server xorg-xrandr lightdm lightdm-gtk-greeter xorg-xbacklight redshift \
     xf86-input-synaptics keepass linux-headers virtualbox shutter \
+    bluez bluez-utils blueman \
     zsh neovim udevil i3-wm i3status termite compton dunst feh docker dmenu \
     udevil simplescreenrecorder gparted gksu networkmanager network-manager-applet \
     pulseaudio pulseaudio-alsa pavucontrol volumeicon
@@ -42,6 +43,9 @@ sudo systemctl enable lightdm.service
 # Docker
 sudo systemctl enable docker.service 
 sudo usermod -aG docker $USER
+
+# Bluetooth
+sudo systemctl enable bluetooth.service
 
 # NVM
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash

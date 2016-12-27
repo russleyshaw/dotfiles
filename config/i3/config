@@ -15,6 +15,7 @@ exec compton &
 exec ~/.fehbg
 exec devmon & 
 exec nm-applet &
+exec blueman-applet &
 exec volumeicon &
 exec redshift &
 
