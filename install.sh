@@ -25,9 +25,9 @@ sudo pacman -S --noconfirm --force \
     xorg-server xorg-xrandr lightdm lightdm-gtk-greeter xorg-xbacklight redshift \
     xf86-input-synaptics keepass linux-headers virtualbox shutter \
     bluez bluez-utils blueman \
-    zsh neovim udevil i3-wm i3status termite compton dunst feh docker dmenu \
+    zsh neovim udevil termite compton dunst feh docker dmenu \
     udevil simplescreenrecorder gparted gksu networkmanager network-manager-applet \
-    pulseaudio pulseaudio-alsa pavucontrol volumeicon
+    pulseaudio pulseaudio-alsa pavucontrol
 
 # Yaourt Packages
 yaourt -S --noconfirm \

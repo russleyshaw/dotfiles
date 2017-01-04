@@ -16,6 +16,7 @@ exec ~/.fehbg
 exec devmon & 
 exec nm-applet &
 exec blueman-applet &
+exec ~/bin/jetbrains-toolbox --minimize &
 exec volumeicon &
 exec redshift &
 
@@ -29,6 +30,14 @@ bindsym $mod+F6 exec --no-startup-id xbacklight -inc 10
 bindsym Print exec --no-startup-id shutter --full
 bindsym Shift+Print exec --no-startup-id shutter --select
 bindsym $mod+Print exec --no-startup-id shutter --window
+
+bindsym --release Caps_Lock exec pkill -SIGRTMIN+11 i3blocks
+bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
+
+gaps inner 16
+gaps outer 0
+smart_gaps on
+smart_borders on
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -157,5 +166,5 @@ bar {
 	mode hide
 	hidden_state hide
 	modifier $mod
-        status_command i3status
+        status_command i3blocks
 }
