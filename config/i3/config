@@ -31,7 +31,7 @@ bindsym Print exec --no-startup-id shutter --full
 bindsym Shift+Print exec --no-startup-id shutter --select
 bindsym $mod+Print exec --no-startup-id shutter --window
 
-gaps inner 16
+gaps inner 8
 gaps outer 0
 smart_gaps on
 smart_borders on
