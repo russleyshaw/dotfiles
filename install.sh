@@ -34,7 +34,7 @@ sudo pacman -S --noconfirm --force \
 
 # Yaourt Packages
 yaourt -S --noconfirm \
-    i3-gaps google-chrome-beta visual-studio-code gitkraken slack-desktop arandr lightdm-webkit2-greeter
+    i3-gaps google-chrome-beta visual-studio-code gitkraken arandr lightdm-webkit2-greeter
 
 # Network Manager
 sudo systemctl enable NetworkManager.service
