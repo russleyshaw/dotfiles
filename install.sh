@@ -22,16 +22,16 @@ curl https://cdn.rawgit.com/zsh-users/antigen/v1.3.1/bin/antigen.zsh > ~/bin/ant
 
 # Packages Packages
 sudo pacman -S --noconfirm --force \
-    xorg-server xorg-xrandr lightdm lightdm-gtk-greeter xorg-xbacklight redshift \
+    xorg-server xorg-xrandr lightdm light-locker xorg-xbacklight redshift \
     xf86-input-synaptics keepass linux-headers virtualbox shutter \
-    bluez bluez-utils blueman \
+    bluez bluez-utils blueman i3status\
     zsh neovim udevil termite compton dunst feh docker dmenu \
     udevil simplescreenrecorder gparted gksu networkmanager network-manager-applet \
     pulseaudio pulseaudio-alsa pavucontrol
 
 # Yaourt Packages
 yaourt -S --noconfirm \
-    google-chrome-beta visual-studio-code gitkraken slack-desktop arandr
+    i3-gaps google-chrome-beta visual-studio-code gitkraken slack-desktop arandr lightdm-webkit2-greeter
 
 # Network Manager
 sudo systemctl enable NetworkManager.service
