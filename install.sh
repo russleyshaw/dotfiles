@@ -9,6 +9,9 @@ mkdir -p ~/images/screenshots/
 mkdir -p ~/images/wallpapers/
 cp -TRvf images/ ~/images/
 
+# Setup 
+sudo cp -v etc/pacman.conf /etc/pacman.conf
+
 # Time & Date
 timedatectl set-timezone America/Chicago
 timedatectl set-ntp true
