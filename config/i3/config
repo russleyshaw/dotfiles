@@ -17,6 +17,7 @@ exec devmon &
 exec nm-applet &
 exec blueman-applet &
 exec ~/bin/jetbrains-toolbox --minimize &
+exec light-locker &
 exec volumeicon &
 exec redshift &
 
@@ -30,6 +31,8 @@ bindsym $mod+F6 exec --no-startup-id xbacklight -inc 10
 bindsym Print exec --no-startup-id shutter --full
 bindsym Shift+Print exec --no-startup-id shutter --select
 bindsym $mod+Print exec --no-startup-id shutter --window
+
+bindsym $mod+l exec light-locker-command --lock
 
 gaps inner 8
 gaps outer 0
