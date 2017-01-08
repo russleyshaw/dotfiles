@@ -26,15 +26,15 @@ do
     esac
 done
 
-exit 0
-
 # Setup folders
 mkdir -p ~/bin/
 mkdir -p ~/projects/
 
-# Setup images
+mkdir -p ~/images/
 mkdir -p ~/images/screenshots/
 mkdir -p ~/images/wallpapers/
+
+# Copy images
 cp -TRvf images/ ~/images/
 
 # Powerline Fonts
