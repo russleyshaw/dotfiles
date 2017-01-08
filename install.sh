@@ -72,7 +72,7 @@ sudo usermod -aG docker $USER
 sudo systemctl enable bluetooth.service
 
 # NVM
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
 
 cp -vf .fehbg ~/.fehbg
 cp -vf .zshrc ~/.zshrc
