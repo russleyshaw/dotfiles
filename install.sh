@@ -1,5 +1,7 @@
 #/bin/bash
 
+sudo pacman -Syyu --noconfirm
+
 # Graphics Drivers
 select c in Intel Nvidia
 do 
