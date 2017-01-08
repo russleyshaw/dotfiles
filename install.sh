@@ -1,5 +1,13 @@
 #/bin/bash
 
+# Setup 
+sudo cp -v etc/pacman.conf /etc/pacman.conf
+
+# Time & Date
+timedatectl set-timezone America/Chicago
+timedatectl set-ntp true
+
+# Update all 
 sudo pacman -Syyu --noconfirm
 
 # Graphics Drivers
@@ -28,13 +36,6 @@ mkdir -p ~/projects/
 mkdir -p ~/images/screenshots/
 mkdir -p ~/images/wallpapers/
 cp -TRvf images/ ~/images/
-
-# Setup 
-sudo cp -v etc/pacman.conf /etc/pacman.conf
-
-# Time & Date
-timedatectl set-timezone America/Chicago
-timedatectl set-ntp true
 
 # Powerline Fonts
 git clone https://github.com/powerline/fonts.git ~/bin/powerline/fonts
