@@ -1,5 +1,23 @@
 #/bin/bash
 
+# Graphics Drivers
+select c in Intel Nvidia
+do 
+    case $c in 
+        Intel)
+        sudo pacman -S --noconfirm xf86-video-intel mesa-libgl lib32-mesa-libgl
+        break
+        ;;
+
+        Nvidia)
+        sudo pacman -S --noconfirm xf86-video-intel mesa-libgl lib32-mesa-libgl
+        break
+        ;;
+    esac
+done
+
+exit 0
+
 # Setup folders
 mkdir -p ~/bin/
 mkdir -p ~/projects/

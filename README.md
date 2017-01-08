@@ -4,9 +4,14 @@
 
 1. Install Antergos; no window manager (Base)
 
-2. Run get script 
+2. Clone 
 ```
-wget -qO- https://raw.githubusercontent.com/russleyshaw/dotfiles/master/get.sh | bash
+git clone https://github.com/russleyshaw/dotfiles.git
+```
+
+2. Install
+```
+bash ./install.sh
 ```
 
 3. Reboot
