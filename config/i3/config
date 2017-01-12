@@ -32,6 +32,8 @@ bindsym Print exec --no-startup-id shutter --full
 bindsym Shift+Print exec --no-startup-id shutter --select
 bindsym $mod+Print exec --no-startup-id shutter --window
 
+bindsym $mod+p exec --no-startup-id arandr
+
 bindsym $mod+l exec light-locker-command --lock
 
 gaps inner 8
