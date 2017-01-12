@@ -29,6 +29,7 @@ done
 # Setup folders
 mkdir -p ~/bin/
 mkdir -p ~/projects/
+mkdir -p ~/.screenlayout/
 
 mkdir -p ~/images/
 mkdir -p ~/images/screenshots/
