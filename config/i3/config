@@ -19,7 +19,7 @@ exec blueman-applet &
 exec ~/bin/jetbrains-toolbox --minimize &
 exec light-locker &
 exec volumeicon &
-exec redshift &
+# exec redshift &
 
 set $mod Mod4
 
