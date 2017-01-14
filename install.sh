@@ -1,5 +1,8 @@
 #/bin/bash
 
+DIALOG_YES="0"
+DIALOG_NO="1"
+
 function array_zip {
     for (( i=0; i<${#1[*]}; ++i)); do result+=( ${1[$i]} ${2[$i]} ); done
 }
@@ -30,6 +33,14 @@ function prompt_menu_adv {
     menu_options=(${MENU_OPTIONS})
     choices=$("${cmd[@]}" "${menu_options[@]}" 2>&1 >/dev/tty)
     echo $choices
+}
+
+function prompt_yesno {
+    #title, text
+    dialog --clear --title "$1" --yesno "$2" 22 76 2>&1 >/dev/tty
+    
+    # 0=yes 1=no
+    echo "$?"
 }
 
 function prompt_msg {
@@ -73,11 +84,21 @@ if [ -n "$choices" ]
 then
     prompt_msg "Time Configuration" "You chose the timezone: $choices."
     timedatectl set-timezone $choices
-    timdatectl set-ntp true
+    timedatectl set-ntp true
     prompt_msg "Time Configuration" "$(timedatectl status)"
 else
     prompt_pause "Keyboard Layout" "You chose no timezone." 5
     prompt_msg "Time Configuration" "$(timedatectl status)"
+fi
+
+# Reboot?
+unset choice
+choice=$(prompt_yesno "Installation Complete" "Your installation of Rinix is complete. Reboot?")
+prompt_msg "Keyboard Layout" "You chose the layout: $choice."
+if [ "$choice" -eq "$DIALOG_YES" ]
+then 
+    prompt_pause "Installation Complete" "Rebooting..." 5
+    reboot
 fi
 
 exit 0
