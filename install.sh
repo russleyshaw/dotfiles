@@ -1,5 +1,40 @@
 #/bin/bash
 
+function prompt_menu {
+    #title, text, options
+    MENU_OPTIONS=
+    COUNT=0
+    
+    for i in $3
+    do
+           COUNT=$[COUNT+1]
+           MENU_OPTIONS="${MENU_OPTIONS} $i $i "
+    done
+    cmd=(dialog --title "$1" --menu "$2" 22 76 16)
+    menu_options=(${MENU_OPTIONS})
+    choices=$("${cmd[@]}" "${menu_options[@]}" 2>&1 >/dev/tty)
+    clear
+    echo $choices
+}
+
+### Pre-Installation
+
+## Keyboard Layout
+choices=$(prompt_menu "Keyboard Layout" "Select a keyboard layout: " "$(ls /usr/share/kbd/keymaps/**/*.map.gz)")
+
+## Internet
+# Assuming valid internet connection because script was likely retrieved remotely
+
+## Time
+choices=$(prompt_menu "Time Zone" "Select a timezone: " "$(timedatectl list-timezones)")
+timedatectl set-timezone ${choices}
+timedatectl set-ntp true
+
+exit 0
+
+
+
+
 # Setup 
 sudo cp -v etc/pacman.conf /etc/pacman.conf
 
