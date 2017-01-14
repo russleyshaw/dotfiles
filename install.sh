@@ -34,7 +34,12 @@ function prompt_menu_adv {
 
 function prompt_msg {
     #title, msg
-    dialog --clear --title "$1" --msgbox "$2" 10 80
+    dialog --clear --title "$1" --msgbox "$2" 22 76
+}
+
+function prompt_progress {
+    #title cmd
+    $2 | dialog --title "$1" --progressbox 22 76
 }
 
 # Welcome to Rinux
@@ -43,15 +48,27 @@ prompt_msg "Welcome to Rinux" "This script will guide you through installing you
 ### Pre-Installation
 
 ## Keyboard Layout
+unset choices
 choices=$(prompt_menu "Keyboard Layout" "Select a keyboard layout: " "$(ls /usr/share/kbd/keymaps/**/*.map.gz | grep -Eo "[a-Z0-9-]+.map.gz")" | grep -Eo "[a-Z0-9-]+" | sort | uniq)
+if $choices
+then
+    prompt_progress "Keyboard Layout" "loadkeys $choices"
+else
+    prompt_msg "Keyboard Layout" "No layout selected. "
+fi
 
 ## Internet
-# Assuming valid internet connection because script was likely retrieved remotely
+prompt_progress "Internet Configuration" "ping -c 10 www.google.com"
 
 ## Time
-choices=$(prompt_menu "Time Zone" "Select a timezone: " "$(timedatectl list-timezones | sort | uniq)")
-timedatectl set-timezone ${choices}
-timedatectl set-ntp true
+unset choices
+choices=$(prompt_menu "Time Configuration" "Select a timezone: " "$(timedatectl list-timezones | sort | uniq)")
+if choices
+then
+    prompt_progress "Time Configuration" "timedatectl set-timezone ${choices}; timedatectl set-ntp true; timedatectl status"
+else 
+    prompt_msg "Time Configuration" "No timezone selected. "
+fi
 
 exit 0
 
