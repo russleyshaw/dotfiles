@@ -55,15 +55,30 @@ prompt_msg "Welcome to Rinux" "This script will guide you through installing you
 ## Keyboard Layout
 unset choices
 choices=$(prompt_menu "Keyboard Layout" "Select a keyboard layout: " "$(ls /usr/share/kbd/keymaps/**/*.map.gz | grep -Eo "[a-Z0-9-]+.map.gz")" | grep -Eo "[a-Z0-9-]+" | sort | uniq)
-prompt_pause "Keyboard Layout" "You chose the layout: $choices." 1
-
+if [ "$choices" -ne "" ]
+then
+    prompt_pause "Keyboard Layout" "You chose the layout: $choices." 5
+    loadkeys $choices
+else
+    prompt_pause "Keyboard Layout" "You chose no layout." 5
+fi
+    
 ## Internet
 prompt_progress "Internet Configuration" "ping -c 10 www.google.com"
 
 ## Time
 unset choices
 choices=$(prompt_menu "Time Configuration" "Select a timezone: " "$(timedatectl list-timezones | sort | uniq)")
-prompt_pause "Time Configuration" "You chose the timezone: $choices." 1
+if [ "$choices" -ne "" ]
+then
+    prompt_pause "Time Configuration" "You chose the timezone: $choices." 5
+    timedatectl set-timezone $choices
+    timdatectl set-ntp true
+    prompt_pause "Time Configuration" "$(timedatectl status)" 5
+else
+    prompt_pause "Keyboard Layout" "You chose no timezone." 5
+    prompt_pause "Time Configuration" "$(timedatectl status)" 5
+fi
 
 exit 0
 
