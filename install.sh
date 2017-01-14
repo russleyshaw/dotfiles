@@ -39,8 +39,12 @@ function prompt_msg {
 
 function prompt_progress {
     #title cmd
-    val=$($2 | dialog --clear --title "$1" --progressbox 22 76)
-    echo $val
+    $2 | dialog --clear --title "$1" --progressbox 22 76
+}
+
+function prompt_pause {
+    #title text seconds
+    dialog --clear --title "$1" --pause "$2" 22 76 $3
 }
 
 # Welcome to Rinux
@@ -51,12 +55,7 @@ prompt_msg "Welcome to Rinux" "This script will guide you through installing you
 ## Keyboard Layout
 unset choices
 choices=$(prompt_menu "Keyboard Layout" "Select a keyboard layout: " "$(ls /usr/share/kbd/keymaps/**/*.map.gz | grep -Eo "[a-Z0-9-]+.map.gz")" | grep -Eo "[a-Z0-9-]+" | sort | uniq)
-if [! -z "${choices// }" ]
-then
-    prompt_progress "Keyboard Layout" "loadkeys $choices"
-else
-    prompt_msg "Keyboard Layout" "No layout selected. "
-fi
+prompt_pause "Keyboard Layout" "You chose the layout: $choices." 1
 
 ## Internet
 prompt_progress "Internet Configuration" "ping -c 10 www.google.com"
@@ -64,12 +63,7 @@ prompt_progress "Internet Configuration" "ping -c 10 www.google.com"
 ## Time
 unset choices
 choices=$(prompt_menu "Time Configuration" "Select a timezone: " "$(timedatectl list-timezones | sort | uniq)")
-if [! -z "${choices// }" ]
-then
-    prompt_progress "Time Configuration" "timedatectl set-timezone ${choices}; timedatectl set-ntp true; timedatectl status"
-else 
-    prompt_msg "Time Configuration" "No timezone selected. "
-fi
+prompt_pause "Time Configuration" "You chose the timezone: $choices." 1
 
 exit 0
 
