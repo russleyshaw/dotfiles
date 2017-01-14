@@ -54,7 +54,7 @@ prompt_msg "Welcome to Rinux" "This script will guide you through installing you
 
 ## Keyboard Layout
 unset choices
-choices=$(prompt_menu "Keyboard Layout" "Select a keyboard layout: " "$(ls /usr/share/kbd/keymaps/**/*.map.gz | grep -Eo "[a-Z0-9-]+.map.gz")" | grep -Eo "[a-Z0-9-]+" | sort | uniq)
+choices=$(prompt_menu "Keyboard Layout" "Select a keyboard layout: " "$(ls /usr/share/kbd/keymaps/**/*.map.gz | xargs basename -s .map.gz | sort | uniq)")
 if [ -n "$choices" ]
 then
     prompt_msg "Keyboard Layout" "You chose the layout: $choices."
