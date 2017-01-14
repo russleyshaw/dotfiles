@@ -39,7 +39,7 @@ function prompt_msg {
 
 function prompt_progress {
     #title cmd
-    val=$($2 | dialog --title "$1" --progressbox 22 76)
+    val=$($2 | dialog --clear --title "$1" --progressbox 22 76)
     echo $val
 }
 
