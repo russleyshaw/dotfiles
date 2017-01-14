@@ -1,5 +1,9 @@
 #/bin/bash
 
+function array_zip {
+    for (( i=0; i<${#1[*]}; ++i)); do result+=( ${1[$i]} ${2[$i]} ); done
+}
+
 function prompt_menu {
     #title, text, options
     MENU_OPTIONS=
@@ -10,23 +14,42 @@ function prompt_menu {
            COUNT=$[COUNT+1]
            MENU_OPTIONS="${MENU_OPTIONS} $i $i "
     done
-    cmd=(dialog --title "$1" --menu "$2" 22 76 16)
+    cmd=(dialog --clear --title "$1" --menu "$2" 22 76 16)
     menu_options=(${MENU_OPTIONS})
     choices=$("${cmd[@]}" "${menu_options[@]}" 2>&1 >/dev/tty)
-    clear
     echo $choices
 }
+
+function prompt_menu_adv {
+    #title, text, keys, options
+    MENU_OPTIONS=
+    COUNT=0
+    
+    MENU_OPTIONS=$(array_zip $3 $4)
+    cmd=(dialog --clear --title "$1" --menu "$2" 22 76 16)
+    menu_options=(${MENU_OPTIONS})
+    choices=$("${cmd[@]}" "${menu_options[@]}" 2>&1 >/dev/tty)
+    echo $choices
+}
+
+function prompt_msg {
+    #title, msg
+    dialog --clear --title "$1" --msgbox "$2" 10 80
+}
+
+# Welcome to Rinux
+prompt_msg "Welcome to Rinux" "This script will guide you through installing your new Arch Linux installation"
 
 ### Pre-Installation
 
 ## Keyboard Layout
-choices=$(prompt_menu "Keyboard Layout" "Select a keyboard layout: " "$(ls /usr/share/kbd/keymaps/**/*.map.gz)")
+choices=$(prompt_menu "Keyboard Layout" "Select a keyboard layout: " "$(ls /usr/share/kbd/keymaps/**/*.map.gz | grep -Eo "[a-Z0-9-]+.map.gz")" | grep -Eo "[a-Z0-9-]+" | sort | uniq)
 
 ## Internet
 # Assuming valid internet connection because script was likely retrieved remotely
 
 ## Time
-choices=$(prompt_menu "Time Zone" "Select a timezone: " "$(timedatectl list-timezones)")
+choices=$(prompt_menu "Time Zone" "Select a timezone: " "$(timedatectl list-timezones | sort | uniq)")
 timedatectl set-timezone ${choices}
 timedatectl set-ntp true
 
