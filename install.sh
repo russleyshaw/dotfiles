@@ -112,7 +112,7 @@ prompt_msg "Time Configuration" "$(timedatectl status)"
 # Disk Partitioning
 ################################################################################
 unset choice
-choice=$(prompt_menu_raw "Disk Partitioning" "Select a partitioning method: " "simple 'Entire disk, single root, no swap' diy 'Do It Yourself (bash)'")
+choice=$(prompt_menu_raw "Disk Partitioning" "Select a partitioning method: " "simple Entire\ disk,\ single\ root,\ no\ swap diy Do\ It\ Yourself\ (bash)")
 case $choice in
     simple)
         devmem=$(fdisk --list | grep "^Disk " | cut -d, -f1 | sed "s/Disk\ //;s/\ //g;s/:/\ /")
@@ -131,7 +131,6 @@ esac
 ################################################################################
 unset choice
 choice=$(prompt_yesno "Installation Complete" "Your installation of Rinix is complete. Reboot?")
-prompt_msg "Keyboard Layout" "You chose the layout: $choice."
 if [ "$choice" -eq "$DIALOG_YES" ]
 then 
     prompt_pause "Installation Complete" "Rebooting..." 5
