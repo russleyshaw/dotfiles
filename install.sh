@@ -70,6 +70,34 @@ function prompt_pause {
     dialog --clear --title "$1" --pause "$2" 22 76 $3
 }
 
+function get_partitions {
+    # disk
+    parts=
+    parted --list --machine 2/dev/null | while read line
+    do
+        # Read lines until BYT;
+        if [ "$line" == "BYT;" ]
+        then
+            # Read the disk info
+            read line
+            curr=$(cat line | cut -d: -f1)
+            if [ "$line" == "$1"]
+            then
+                # Read all the partitions
+                while read line
+                do
+                    if [ -n "$line" ]
+                    then
+                        part=$(cat line | cut -d: -f1)
+                        parts="$parts $part"
+                    fi
+                done
+            fi
+        fi
+    done
+    echo "$parts"
+}
+
 ################################################################################
 # Welcome to Rinux
 ################################################################################
@@ -112,12 +140,26 @@ prompt_msg "Time Configuration" "$(timedatectl status)"
 # Disk Partitioning
 ################################################################################
 unset choice
-choice=$(prompt_menu_raw "Disk Partitioning" "Select a partitioning method: " "simple Entire\ disk,\ single\ root,\ no\ swap diy Do\ It\ Yourself\ (bash)")
+choice=$(prompt_menu_raw "Disk Partitioning" "Select a partitioning method: " "guided Guided diy Bash")
 case $choice in
     simple)
-        devmem=$(fdisk --list | grep "^Disk " | cut -d, -f1 | sed "s/Disk\ //;s/\ //g;s/:/\ /")
-        choice=$(prompt_menu_raw "Disk Partitioning" "Select a disk to install to: " "$devmem")
-        prompt_msg "Disk Partitioning" "SELECTED $choice"
+        options=
+        parted --list --machine 2>/dev/null | while read line
+        do
+            if [ "$line" == "BYT;" ]
+            then
+                read line
+                options="$options $(cat line | cut -d: -f1,2 | sed 's/:/\ /')"
+            fi
+        done
+        # Prompt and select Disks
+        disk=$(prompt_menu_raw "Disk Partitioning" "Select a disk to install to: " "$options")
+        prompt_msg "Disk Partitioning" "SELECTED $disk"
+        
+        # Select all partitions
+        parts=$(get_partitions $disk)
+        prompt_msg "Disk Partitioning" "PARTITIONS $parts"
+        
         ;;
     diy)
         prompt_msg "Disk Partitioning" "Please partition your disks manually. A bash prompt will open. Please exit when finished"
