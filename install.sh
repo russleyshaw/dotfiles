@@ -144,7 +144,8 @@ prompt_msg "Time Configuration" "$(timedatectl status)"
 method=$(prompt_menu_raw "Disk Partitioning" "Select a partitioning method: " "guided Guided diy Bash")
 prompt_msg "Disk Partitioning" "METHOD $method"
 case $method in
-    simple)
+    guided)
+        # Get Disks
         options=
         parted --list --machine 2>/dev/null | while read line
         do
@@ -154,9 +155,9 @@ case $method in
                 options="$options $(cat line | cut -d: -f1,2 | sed 's/:/\ /')"
             fi
         done
+        prompt_msg "Disk Partitioning" "Options: $options"
         # Prompt and select Disks
-        unset choice
-        disk=$(prompt_menu_raw "Disk Partitioning" "Select a disk to install to: " "$disk")
+        disk=$(prompt_menu_raw "Disk Partitioning" "Select a disk to install to: " "$options")
         prompt_msg "Disk Partitioning" "SELECTED $disk"
         
         # Select all partitions
@@ -169,7 +170,7 @@ case $method in
         bash
         ;;
     *)
-        prompt_msg "Disk Partitioning" "Error: Partitioning method \"$method\" does not exist."
+        prompt_msg "Disk Partitioning" "Error: Partitioning method $method does not exist."
         ;;
 esac
 
