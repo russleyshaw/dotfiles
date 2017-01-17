@@ -90,6 +90,8 @@ function get_partitions {
                     then
                         part=$(cat line | cut -d: -f1)
                         parts="$parts $part"
+                    else
+                        break
                     fi
                 done
             fi
@@ -139,9 +141,9 @@ prompt_msg "Time Configuration" "$(timedatectl status)"
 ################################################################################
 # Disk Partitioning
 ################################################################################
-unset choice
-choice=$(prompt_menu_raw "Disk Partitioning" "Select a partitioning method: " "guided Guided diy Bash")
-case $choice in
+method=$(prompt_menu_raw "Disk Partitioning" "Select a partitioning method: " "guided Guided diy Bash")
+prompt_msg "Disk Partitioning" "METHOD $method"
+case $method in
     simple)
         options=
         parted --list --machine 2>/dev/null | while read line
@@ -153,7 +155,8 @@ case $choice in
             fi
         done
         # Prompt and select Disks
-        disk=$(prompt_menu_raw "Disk Partitioning" "Select a disk to install to: " "$options")
+        unset choice
+        disk=$(prompt_menu_raw "Disk Partitioning" "Select a disk to install to: " "$disk")
         prompt_msg "Disk Partitioning" "SELECTED $disk"
         
         # Select all partitions
@@ -164,6 +167,9 @@ case $choice in
     diy)
         prompt_msg "Disk Partitioning" "Please partition your disks manually. A bash prompt will open. Please exit when finished"
         bash
+        ;;
+    *)
+        prompt_msg "Disk Partitioning" "Error: Partitioning method \"$method\" does not exist."
         ;;
 esac
 
