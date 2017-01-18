@@ -7,6 +7,10 @@ function array_zip {
     for (( i=0; i<${#1[*]}; ++i)); do result+=( ${1[$i]} ${2[$i]} ); done
 }
 
+################################################################################
+# Prompt Helpers
+################################################################################
+
 function prompt_menu {
     #title, text, options
     MENU_OPTIONS=
@@ -70,34 +74,12 @@ function prompt_pause {
     dialog --clear --title "$1" --pause "$2" 22 76 $3
 }
 
-function get_partitions {
-    # disk
-    parts=
-    parted --list --machine 2/dev/null | while read line
-    do
-        # Read lines until BYT;
-        if [ "$line" == "BYT;" ]
-        then
-            # Read the disk info
-            read line
-            curr=$(cat line | cut -d: -f1)
-            if [ "$line" == "$1"]
-            then
-                # Read all the partitions
-                while read line
-                do
-                    if [ -n "$line" ]
-                    then
-                        part=$(cat line | cut -d: -f1)
-                        parts="$parts $part"
-                    else
-                        break
-                    fi
-                done
-            fi
-        fi
-    done
-    echo "$parts"
+
+################################################################################
+# Selections
+################################################################################
+function select_disk {
+
 }
 
 ################################################################################
@@ -145,16 +127,7 @@ method=$(prompt_menu_raw "Disk Partitioning" "Select a partitioning method: " "g
 prompt_msg "Disk Partitioning" "METHOD $method"
 case $method in
     guided)
-        # Get Disks
-        options=
-        parted --list --machine 2>/dev/null | while read line
-        do
-            if [ "$line" == "BYT;" ]
-            then
-                read line
-                options="$options $(cat line | cut -d: -f1,2 | sed 's/:/\ /')"
-            fi
-        done
+        options=(`lsblk --nodeps --list --paths --noheadings | awk '{print $1,$4}' | grep 'sd\|hd\|vd'`);
         prompt_msg "Disk Partitioning" "Options: $options"
         # Prompt and select Disks
         disk=$(prompt_menu_raw "Disk Partitioning" "Select a disk to install to: " "$options")
