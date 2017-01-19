@@ -1,20 +1,7 @@
-# dotfiles
+# Russley's Dotfiles
 
-### How To
-
-1. Install Antergos; no window manager (Base)
-
-2. Clone 
-```
-git clone https://github.com/russleyshaw/dotfiles.git
-```
-
-2. Install
-```
-bash ./install.sh
-```
-
-3. Reboot
-```
-reboot
-```
+### How to Customize
+1. Fork
+2. Add your dotfiles and configs to `home`
+3. Add any root level configs to `root`
+4. Edit `install.sh` for custom prompts, packages, etc

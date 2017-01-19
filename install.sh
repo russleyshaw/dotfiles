@@ -125,8 +125,8 @@ clear
 sudo cp root/etc/pacman.conf /etc/pacman.conf
 
 sudo pacman -Syyu 
-sudo pacman -Syyu --noconfirm $PACKAGES
-yaourt -S --noconfirm $AUR_PACKAGES
+sudo pacman -Syyu --noconfirm --force $PACKAGES
+yaourt -S --noconfirm --force $AUR_PACKAGES
 
 # Copy home
 cp -TRvf home/ ~/
