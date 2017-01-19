@@ -166,7 +166,7 @@ sudo usermod --shell $(which zsh) russley
 # Reboot?
 ################################################################################
 unset choice
-choice=$(prompt_yesno "Installation Complete" "Your installation of Rinix is complete. Reboot?")
+choice=$(prompt_yesno "Installation Complete" "Your installation of Russley's Dotfiles is complete. Reboot?")
 if [ "$choice" -eq "$DIALOG_YES" ]
 then 
     prompt_pause "Installation Complete" "Rebooting..." 5
