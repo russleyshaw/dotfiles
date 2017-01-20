@@ -112,7 +112,7 @@ fi
 AUDIO=$(prompt_yesno "Audio" "Install audio utilities?")
 if [ "$AUDIO" == "$DIALOG_YES" ]
 then
-    pkgs="pulseaudio pulseaudio-alsa pavucontrol"
+    pkgs="pulseaudio pulseaudio-alsa pavucontrol volumeicon"
     prompt_msg "Audio" "Adding: $pkgs"
     PACKAGES="$PACKAGES $pkgs"
 fi
