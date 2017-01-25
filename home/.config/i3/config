@@ -33,7 +33,7 @@ bindsym Shift+Print exec --no-startup-id shutter --select
 bindsym $mod+Print exec --no-startup-id shutter --window
 
 # Projector/Setup Displays
-bindsym $mod+p exec --no-startup-id arandr
+bindsym $mod+p exec --no-startup-id python3 ~/bin/project.py
 
 # Lock Screen
 bindsym $mod+l exec light-locker-command --lock
