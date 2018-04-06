@@ -2,6 +2,8 @@
 
 My dotfiles for SSH'd development.
 
+![Screenshot](screenshot.png)
+
 ## Installing
 
 - Install zsh, vim, tmux
