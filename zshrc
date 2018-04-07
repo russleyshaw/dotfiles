@@ -1,9 +1,18 @@
 source ~/.antigen/antigen.zsh
 
+zsh_nvm_version(){
+    if [[ -f "package.json" || -f "../package.json" || -f "../../package.json"  ]]; then
+        local version=$(nvm current)
+        echo -n "$version"
+    fi
+}
+POWERLEVEL9K_CUSTOM_NVM_VERSION="zsh_nvm_version"
+POWERLEVEL9K_CUSTOM_NVM_VERSION_BACKGROUND="green"
+
 DEFAULT_USER="russley"
 POWERLEVEL9K_INSTALLATION_PATH=$ANTIGEN_BUNDLES/bhilburn/powerlevel9k
-# POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
-COMPLETION_WAITING_DOGS="true"
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(command_execution_time status custom_nvm_version root_indicator background_jobs history time)
 export TERM="xterm-256color"
 
 antigen use oh-my-zsh

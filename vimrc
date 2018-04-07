@@ -44,6 +44,10 @@ set ruler " Show file stats
 set confirm " Prompt for save on unsaved changes
 set mouse=a " Enable use of mouse for all modes
 
+" Smart Home http://vim.wikia.com/wiki/Smart_home
+noremap <expr> <silent> <Home> col('.') == match(getline('.'),'\S')+1 ? '0' : '^'
+imap <silent> <Home> <C-O><Home>
+
 set cursorline " Highlight current line
 
 " INDENTATION
@@ -71,7 +75,7 @@ set noswapfile
 set history=1000
 set undolevels=1000
 
-" Folding
+" ==== FOLDING ====
 set foldenable " Enable folding
 set foldlevelstart=10 " Open most folds by default
 set foldnestmax=10 " Next 10 folds max
@@ -88,6 +92,13 @@ set showcmd " show partial commands in last line
 " Airline / Powerline
 let g:airline_powerline_fonts=1
 let g:airline_theme='simple'
+let g:airline#extensions#tabline#enabled = 1
+
+" BUFFERS/TABS
+" Move left/right with Ctrl + Space + Left/Right
+set hidden
+nnoremap <C-S-Right> :bnext<CR>
+nnoremap <C-S-Left> :bprevious<CR>
 
 " SYNTASTIC
 set statusline+=%#warningmsg#
@@ -101,9 +112,6 @@ let g:syntastic_check_on_wq = 0
 
 let g:tsuquyomi_disable_quickfix = 1
 let g:syntastic_typescript_checkers = ['tsuquyomi'] " You shouldn't use 'tsc' checker.
-
-autocmd QuickFixCmdPost [^l]* nested cwindow
-autocmd QuickFixCmdPost    l* nested lwindow
 
 " NERDTree
 autocmd vimenter * NERDTree " Automatically open NERDTree
