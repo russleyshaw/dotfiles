@@ -7,24 +7,26 @@ My dotfiles for SSH'd development.
 ## Installing
 
 - Install zsh, vim, tmux
-- [Install Antigen](https://github.com/zsh-users/antigen#installation)
 - [Install Powerline Fonts](https://github.com/powerline/fonts/archive/master.zip)
 - [Install Dracula Theme](https://gist.github.com/russleyshaw/4ce43f3b3c0d68ac67fe69eb3a375a4d)
 
 ```bash
-# Copy files
-cp ./zshrc ~/.zshrc
-cp ./vimrc ~/.vimrc
-cp ./tmux.conf ~/.tmux.conf
-
-# Install VIM plugins
-vim +PluginInstall +qall
+./install.sh
 ```
 
 ## Updating
 
 ```bash
-cp ~/.zshrc ./zshrc
-cp ~/.vimrc ./vimrc
-cp ~/.tmux.conf ./tmux.conf
+./update.sh
+```
+
+## Yarn
+```bash
+curl -o- -L https://yarnpkg.com/install.sh | bash
+```
+
+## NVM
+```bash
+mkdir ~/.nvm
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
 ```
