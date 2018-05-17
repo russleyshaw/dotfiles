@@ -9,6 +9,7 @@ My dotfiles for SSH'd development.
 - Install zsh, vim, tmux
 - [Install Powerline Fonts](https://github.com/powerline/fonts/archive/master.zip)
 - [Install Dracula Theme](https://gist.github.com/russleyshaw/4ce43f3b3c0d68ac67fe69eb3a375a4d)
+- Install make, cmake (for VIM plugins)
 
 ```bash
 ./install.sh
