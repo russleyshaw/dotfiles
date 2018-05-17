@@ -16,7 +16,6 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'airblade/vim-gitgutter'
 Plug 'Quramy/tsuquyomi'
-Plug 'Valloric/YouCompleteMe'
 Plug 'scrooloose/syntastic'
 Plug 'prettier/vim-prettier'
 call plug#end()
@@ -112,6 +111,8 @@ let g:syntastic_check_on_wq = 0
 
 let g:tsuquyomi_disable_quickfix = 1
 let g:syntastic_typescript_checkers = ['tsuquyomi'] " You shouldn't use 'tsc' checker.
+
+autocmd FileType typescript nmap <buffer> <Leader>t : <C-u>echo tsuquyomi#hint()<CR>
 
 " NERDTree
 autocmd vimenter * NERDTree " Automatically open NERDTree
