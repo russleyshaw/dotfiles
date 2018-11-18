@@ -1,0 +1,8 @@
+{
+    "React Import": {
+        "scope": "javascript,javascriptreact,typescript,typescriptreact",
+        "prefix": "react",
+        "description": "Import React",
+        "body": ["import * as React from \"react\";", "$0"]
+    }
+}
